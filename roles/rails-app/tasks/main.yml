@@ -10,23 +10,23 @@
         src=/etc/nginx/sites-available/rails
         state=link
 
-- name: Create the application directories
-  file: path={{ item }}
-        owner=deploy
-        group=deploy
-        state=directory
-  with_items:
-    - "{{ rails_app_location }}"
-    - "{{ rails_app_location }}/shared"
-    - "{{ rails_app_location }}/shared/bundle"
-    - "{{ rails_app_location }}/shared/log"
+# - name: Create the application directories
+#   file: path={{ item }}
+#         owner=deploy
+#         group=deploy
+#         state=directory
+#   with_items:
+#     - "{{ rails_app_location }}"
+#     - "{{ rails_app_location }}/shared"
+#     - "{{ rails_app_location }}/shared/bundle"
+#     - "{{ rails_app_location }}/shared/log"
 
-- name: Check out the latest revision of the codebase and notify the proper handlers if there have been updates
-  git: repo=https://github.com/X0nic/blank-rails-app.git
-        dest={{ rails_app_location }}/current
-  sudo: yes
-  sudo_user: deploy
-  notify:
-    - Symlink the log directory to the shared location
-    - Install the bundle
-    - Restart the rails application
+# - name: Check out the latest revision of the codebase and notify the proper handlers if there have been updates
+#   git: repo=https://github.com/X0nic/blank-rails-app.git
+#         dest={{ rails_app_location }}/current
+#   sudo: yes
+#   sudo_user: deploy
+#   notify:
+#     - Symlink the log directory to the shared location
+#     - Install the bundle
+#     - Restart the rails application

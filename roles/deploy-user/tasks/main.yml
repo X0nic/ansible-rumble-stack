@@ -1,9 +1,14 @@
 ---
+- name: Add admin group
+  group: name=admin state=present
+
 - name: Add the deploy user
   user: name=deploy
         home=/home/deploy
         shell=/bin/bash
         comment="Deploy User"
+        group=admin
+        password=$1$iamacraz$66OPoeWRByasoieUkCjDk1
 
 - name: Set up authorized_keys for the deploy user
   authorized_key: user=deploy
@@ -12,6 +17,5 @@
   with_file:
     - public_keys/x0nic
     - public_keys/hotshot
-    - public_keys/rumblebot
     - public_keys/strangebrew
     - public_keys/flowy

@@ -4,7 +4,7 @@
        update_cache=yes
 
 - name: Install git
-  apt: pkg=git
+  apt: pkg=git-core
 
 - name: Install NTP
   apt: pkg=ntp
@@ -21,3 +21,31 @@
 
 - name: Install python-software-properties so the apt_repository module will work properly
   apt: pkg=python-software-properties
+#
+# - name: Copy sudoers file for safety
+#   command: cp -f /etc/sudoers /etc/sudoers.tmp
+#
+# - name: Create sudoers file backup
+#   command: cp -f /etc/sudoers /etc/sudoers.${date}.bak
+#
+# - name: Create admins group
+#   group: name=admins system=yes state=present
+#
+# - name: make sure we can sudo as admin group
+#   lineinfile: dest=/etc/sudoers.tmp state=present regexp='^%admin' line='%admin ALL=(ALL) ALL'
+#
+# - name: also make sure ssh-agent works via sudo
+#   lineinfile: dest=/etc/sudoers.tmp state=present regexp='^Defaults env_keep\+\=SSH_AUTH_SOCK' line='Defaults env_keep+=SSH_AUTH_SOCK'
+#
+# - name: Final sudoers file check
+#   shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
+
+# - name: Install rumblebot ssh key
+#   command: "mkdir -p ~/.ssh && curl http://railsrumble.com.s3.amazonaws.com/rumblebot.pub >> ~/.ssh/authorized_keys && chmod 0644 ~/.ssh/authorized_keys"
+
+- name: Install rumblebot ssh key
+  authorized_key: user=root
+                  state=present
+                  key="{{ item }}"
+  with_file:
+    - public_keys/rumblebot
