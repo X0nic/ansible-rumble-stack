@@ -1,0 +1,6 @@
+---
+- name: Install Mongodb
+  apt: pkg=mongodb
+
+- name: Start Mongodb Service
+  service: name=mongodb state=started enabled=true
