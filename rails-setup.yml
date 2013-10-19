@@ -1,11 +1,11 @@
 ---
 - hosts: rails-servers
 
-  # user: root
+  user: root
 
   # Vagrant setup
-  user: vagrant
-  sudo: true
+  # user: vagrant
+  # sudo: true
 
   roles:
     - common
@@ -14,4 +14,4 @@
 #   - ruby-1.9.3
     - ruby-2.0.0
     - nginx-passenger
-    - blank-rails-app
+    - rails-app

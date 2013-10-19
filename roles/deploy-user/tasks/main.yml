@@ -11,3 +11,7 @@
                   key="{{ item }}"
   with_file:
     - public_keys/x0nic
+    - public_keys/hotshot
+    - public_keys/rumblebot
+    - public_keys/strangebrew
+    - public_keys/flowy
