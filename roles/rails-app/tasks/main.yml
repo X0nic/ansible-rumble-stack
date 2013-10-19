@@ -10,6 +10,9 @@
         src=/etc/nginx/sites-available/rails
         state=link
 
+- name: Install nodejs for asset pipeline
+  apt: pkg=nodejs
+
 # - name: Create the application directories
 #   file: path={{ item }}
 #         owner=deploy
