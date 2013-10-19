@@ -3,7 +3,7 @@ Ansible Rails Stack
 
  Heavily based off of [Mazer Rackham](https://github.com/jlund/mazer-rackham)
 
- Sample [Ansible](http://www.ansibleworks.com/) Playbook for Rack applications that installs Nginx, Passenger, and Ruby 2.0.0 (or 1.9.3). It also demonstrates how to deploy a [basic Rack application](https://github.com/jlund/imgur-display) from a git repository.
+ Sample [Ansible](http://www.ansibleworks.com/) Playbook for Rack applications that installs Nginx, Passenger, Ruby 2.0.0 (or 1.9.3), mongodb, and redis. 
 
  Specifically, it does the following:
 
@@ -16,10 +16,6 @@ Ansible Rails Stack
  * Installs Bundler
  * Installs Nginx + Passenger
  * Sets up and enables an Nginx vhost
- * Creates all necessary application directories
- * Uses git to checkout the latest revision of the [Blank Rails App](https://github.com/X0nic/blank-rails-app) codebase
- * Creates required symlinks
- * Uses bundler to install all Gem dependencies
 
 Running this playbook will leave you with a fully-functional blank rails app. Thanks to [Joshua Lund](https://github.com/jlund) for [Mazer Rackham](https://github.com/jlund/mazer-rackham)
 
